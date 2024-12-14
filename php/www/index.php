@@ -24,7 +24,7 @@ require_once("./components/article-card/index.php");
         ?>
 
         <!-- メインコンテンツ -->
-        <div class="content w-100 ms-4">
+        <div class="content w-100 ms-md-4">
             <?php 
                 $header = new Header();
                 $header->render();
