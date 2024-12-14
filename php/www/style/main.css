@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 1;
+    /* サイドバーのz-indexを低く設定 */
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    /* ヘッダーのz-indexをサイドバーより高く設定 */
+    background-color: #fff;
+    /* 背景色を追加して下の要素を隠す */
+}
+
+.hover-bg:hover {
+    background-color: #e6e6e6;
+    /* ホバー時に薄いグレー */
+}
+
+.hover-bg-danger:hover {
+    background-color: #f8d7da;
+    /* ホバー時に薄い赤色 */
+}
