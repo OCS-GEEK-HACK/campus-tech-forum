@@ -1,6 +1,7 @@
 <div class="header sticky-top bg-white border-bottom d-flex flex-column p-3">
     <div class="d-flex justify-content-between align-items-center w-100">
-        <div class="search-box d-flex align-items-center gap-2">
+        <h4 class="d-md-none mb-0">アイデア掲示板</h4>
+        <div class="search-box align-items-center gap-2 d-md-flex d-none">
             <input type="text" class="form-control" placeholder="検索...">
             <button class="btn btn-dark"><i class="fas fa-search"></i></button>
         </div>
@@ -17,7 +18,11 @@
 
     <!-- ハンバーガーメニューが表示される部分 -->
     <div class="collapse" id="sidebarMenu">
-        <nav class="sidebar-mobile bg-light d-md-none mt-2">
+        <nav class="sidebar-mobile bg-light d-md-none py-3 px-3">
+            <div class="search-box d-flex align-items-center gap-2">
+                <input type="text" class="form-control" placeholder="検索...">
+                <button class="btn btn-dark"><i class="fas fa-search"></i></button>
+            </div>
             <ul class="list-unstyled p-0">
                 <li>
                     <a href="#" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-plus"></i> 投稿する</a>
