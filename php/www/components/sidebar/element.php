@@ -1,6 +1,6 @@
-<nav class="sidebar bg-light border-end p-4 d-flex row">
+<nav class="sidebar bg-light border-end p-3 d-flex row">
     <h4 class="mb-4">アイデア掲示板</h4>
-    <ul class="list-unstyled">
+    <ul class="list-unstyled p-0">
         <li>
             <a href="#" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-home me-2"></i> ホーム</a>
         </li>
