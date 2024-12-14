@@ -1,4 +1,4 @@
-<nav class="sidebar bg-light border-end p-3 d-flex row">
+<nav class="sidebar bg-light border-end p-3 d-flex row d-md-block d-none">
     <h4 class="mb-4">アイデア掲示板</h4>
     <ul class="list-unstyled p-0">
         <li>
