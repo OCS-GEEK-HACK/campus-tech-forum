@@ -3,8 +3,7 @@ require_once("./lib/connect-db.php");
 require_once("./components/header/index.php");
 require_once("./components/sidebar/index.php");
 require_once("./components/article-card/index.php");
-require_once("./components/input-box/index.php");
-require_once("./components/input-content/index.php");
+require_once("./components/content-card/index.php");
 ?>
 
 <!DOCTYPE html>
@@ -33,14 +32,12 @@ require_once("./components/input-content/index.php");
             ?>
 
             <section>
-                <h4>技術探求掲示板</h4>
-                <?php 
-                    $input_box = new InputBox();
-                    $input_box->render();
-                ?>
-                <?php 
-                    $input_content = new InputContent();
-                    $input_content->render();
+            <h4 class="m-0 p-4 pb-0">最近の投稿</h4>
+                <?php
+                    for ($i = 0; $i < 4; $i++):
+                        $input_box = new ContentCard();
+                        $input_box->render();
+                    endfor;
                 ?>
             </section>
 
