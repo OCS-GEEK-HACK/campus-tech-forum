@@ -1,9 +1,9 @@
 <?php
-require_once("./lib/connect-db.php");
-require_once("./components/header/index.php");
-require_once("./components/sidebar/index.php");
-require_once("./components/article-card/index.php");
-require_once("./components/content-card/index.php");
+require_once("../lib/connect-db.php");
+require_once("../components/header/index.php");
+require_once("../components/sidebar/index.php");
+require_once("../components/article-card/index.php");
+require_once("../components/content-card/index.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ require_once("./components/content-card/index.php");
 <head>
     <meta charset="UTF-8">
     <title>学内掲示板</title>
-    <?php require_once('./lib/bootstrap.php'); ?>
+    <?php require_once('../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 
@@ -25,14 +25,14 @@ require_once("./components/content-card/index.php");
         ?>
 
         <!-- メインコンテンツ -->
-        <div class="content w-100 ms-4">
+        <div class="content w-100 ms-md-4">
             <?php 
                 $header = new Header();
                 $header->render();
             ?>
 
             <section>
-                <h4 class="m-0 p-4 pb-0">最近の投稿</h4>
+            <h4 class="m-0 p-4 pb-0">最近の投稿</h4>
                 <?php
                     for ($i = 0; $i < 4; $i++):
                         $input_box = new ContentCard();
