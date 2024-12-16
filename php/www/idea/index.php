@@ -31,8 +31,8 @@ require_once("../components/content-card/index.php");
                 $header->render();
             ?>
 
-            <section>
-                <h4 class="m-0 p-4 pb-0">最近の投稿</h4>
+            <section class="p-4">
+                <h4>最近の投稿</h4>
                 <?php
                     for ($i = 0; $i < 4; $i++):
                         $input_box = new ContentCard();
