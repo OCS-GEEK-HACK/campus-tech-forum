@@ -1,5 +1,5 @@
 <nav class="sidebar bg-light border-end p-3 d-flex row d-md-block d-none">
-    <h4 class="mb-4">アイデア掲示板</h4>
+    <a href="/" class="h4 mb-4 text-decoration-none text-dark d-block">アイデア掲示板</a>
     <ul class="list-unstyled p-0">
         <li>
             <a href="/" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-home me-2"></i> ホーム</a>
