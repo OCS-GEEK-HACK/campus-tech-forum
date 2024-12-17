@@ -2,19 +2,19 @@
     <h4 class="mb-4">アイデア掲示板</h4>
     <ul class="list-unstyled p-0">
         <li>
-            <a href="#" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-home me-2"></i> ホーム</a>
+            <a href="/" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-home me-2"></i> ホーム</a>
         </li>
         <li>
-            <a href="#" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-share-square me-2"></i> イベント共有</a>
+            <a href="/event" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-share-square me-2"></i> イベント共有</a>
         </li>
         <li>
-            <a href="#" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-lightbulb me-2"></i> アイデア共有</a>
+            <a href="/idea" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-lightbulb me-2"></i> アイデア共有</a>
         </li>
         <li>
-            <a href="#" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-search me-2"></i> 技術探求</a>
+            <a href="/tech" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-search me-2"></i> 技術探求</a>
         </li>
         <li>
-            <a href="#" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-question-circle me-2"></i> 質問</a>
+            <a href="/question" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-question-circle me-2"></i> 質問</a>
         </li>
         <hr>
         <li>
