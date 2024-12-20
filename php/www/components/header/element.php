@@ -1,6 +1,6 @@
 <div class="header sticky-top bg-white border-bottom d-flex flex-column p-3">
     <div class="d-flex justify-content-between align-items-center w-100">
-        <a href="/" class="h4 mb-0 text-decoration-none text-dark d-md-none d-block">アイデア掲示板</a>
+        <a href="/" class="h4 mb-0 text-decoration-none text-dark d-md-none d-block">学内掲示板アプリ</a>
         <div class="search-box align-items-center gap-2 d-md-flex d-none">
             <input type="text" class="form-control" placeholder="検索...">
             <button class="btn btn-dark"><i class="fas fa-search"></i></button>

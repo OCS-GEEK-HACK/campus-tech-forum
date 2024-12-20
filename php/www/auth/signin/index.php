@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学内掲示板 - サインイン</title>
+    <title>学内掲示板アプリ - サインイン</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
 </head>
 

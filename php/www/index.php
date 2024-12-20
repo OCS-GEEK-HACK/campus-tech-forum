@@ -11,7 +11,7 @@ require_once("./components/article-card/index.php");
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板</title>
+    <title>学内掲示板アプリ</title>
     <?php require_once('./lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
