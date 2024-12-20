@@ -7,6 +7,7 @@ require_once("../../components/sidebar/index.php");
 // 初期化
 $event = null;
 $event_id = null;
+$comments = null;
 
 // イベントIDが存在しなかった場合のエラー処理
 if (!isset($_GET['event_id']) || !is_numeric($_GET['event_id'])) {
@@ -28,6 +29,18 @@ try {
     if (!$event) {
         $_SESSION['errors'] = ['指定されたイベントは存在しません。'];
     }
+
+    // コメント一覧を取得するSQLクエリ
+    $sql_comments = "SELECT ec.content, ec.created_at, u.displayName 
+                     FROM event_comments ec
+                     JOIN users u ON ec.user_id = u.id
+                     WHERE ec.event_id = :event_id
+                     ORDER BY ec.created_at DESC";
+    $stmt_comments = $pdo->prepare($sql_comments);
+    $stmt_comments->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $stmt_comments->execute();
+    $comments = $stmt_comments->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     $_SESSION['errors'] = ['データベースエラーが発生しました: ' . $e->getMessage()];
 }
@@ -87,17 +100,17 @@ try {
                     <!-- コメント一覧 -->
                     <h2 class="mt-5"><i class="fas fa-comments me-2"></i>コメント一覧</h2>
                     <div class="comments mt-4">
-                        <!-- ここにコメント一覧を表示する -->
-                        <div class="comment mb-3 p-3 border rounded">
-                            <strong>ユーザー名</strong>
-                            <p>コメント内容がここに入ります。</p>
-                            <small class="text-muted">2024/12/20 14:32</small>
-                        </div>
-                        <div class="comment mb-3 p-3 border rounded">
-                            <strong>他のユーザー</strong>
-                            <p>コメント内容がここに入ります。</p>
-                            <small class="text-muted">2024/12/19 10:20</small>
-                        </div>
+                        <?php if ($comments): ?>
+                            <?php foreach ($comments as $comment): ?>
+                                <div class="comment mb-3 p-3 border rounded">
+                                    <strong><?= htmlspecialchars($comment['displayname'], ENT_QUOTES, 'UTF-8'); ?></strong>
+                                    <p><?= nl2br(htmlspecialchars($comment['content'], ENT_QUOTES, 'UTF-8')); ?></p>
+                                    <small class="text-muted"><?= date('Y/m/d H:i', strtotime($comment['created_at'])); ?></small>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p>まだコメントはありません。</p>
+                        <?php endif; ?>
                     </div>
 
                     <!-- コメント投稿フォーム -->
@@ -112,7 +125,7 @@ try {
                                 キャンセル
                             </a>
                             <button type="submit" class="btn btn-dark">投稿する</button>
-                    </div>
+                        </div>
                     </form>
                 <?php else: ?>
                     <!-- エラー表示 -->
