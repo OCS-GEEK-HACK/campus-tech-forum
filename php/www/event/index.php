@@ -31,9 +31,11 @@ require_once("../components/content-card/index.php");
                 $header = new Header();
                 $header->render();
             ?>
-
-            <section class="p-4">
-            <h4>最近のイベント</h4>
+            <section class="p-4 d-flex flex-column gap-3">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-0">最近のイベント</h4>
+                    <button class="btn btn-dark d-md-block d-none"><i class="fas fa-plus"></i> 投稿する</button>
+                </div>
                 <?php
                     for ($i = 0; $i < 4; $i++):
                         $input_box = new ContentCard();
