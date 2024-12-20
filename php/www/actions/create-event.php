@@ -73,7 +73,7 @@ $tags_sql_array = '{' . implode(',', $tags_array) . '}';
 try {
     // SQLの作成 (イベントのINSERT文)
     $sql = "INSERT INTO events (user_id, title, tags, event_date, location, description) 
-            VALUES (:user_id, :title, :tags, :event_date, :location, :description)";
+            VALUES (:user_id, :title, :tags, :event_date, :location, :description) RETURNING id";
     
     // プリペアドステートメントの作成
     $stmt = $pdo->prepare($sql);
@@ -88,9 +88,11 @@ try {
 
     // SQLを実行
     $stmt->execute();
+    $resultData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // イベントの詳細情報を取得
     $eventData = [
+        'id'       => $resultData["id"],
         'title'       => htmlspecialchars($title),
         'tags'        => htmlspecialchars($tags),
         'event_date'  => htmlspecialchars($event_date),

@@ -18,6 +18,7 @@
 
         // コピーしたテンプレートにイベントデータを埋め込む
         clone.querySelector('h5').textContent = event.title;
+        clone.querySelector('a').href = `/event/detail?event_id=${event.id}`;
         const tagElement = clone.querySelector('h6');
         tagElement.querySelector('i').insertAdjacentHTML('afterend', ` ${tags}`); // アイコンの後ろにタグを挿入
         clone.querySelector('p').textContent = event.description;

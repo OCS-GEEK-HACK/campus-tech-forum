@@ -68,14 +68,16 @@ try {
     </div>
 
     <template id="event-template">
-        <section class="mw-100 rounded p-3 mb-2 border">
-            <h5 class="m-0"></h5>
+        <a href="" class="text-decoration-none text-dark">
+            <section class="mw-100 rounded p-3 mb-2 border">
+                <h5 class="m-0"></h5>
 
-            <h6 class="m-0 pt-2 fw-light"><i class="fa-solid fa-tag"></i> </h6>
+                <h6 class="m-0 pt-2 fw-light"><i class="fa-solid fa-tag"></i> </h6>
 
-            <p class="w-75 pt-2 m-0"></p>
-            <h7 class="pt-2"></h7>
-        </section>
+                <p class="w-75 pt-2 m-0"></p>
+                <h7 class="pt-2"></h7>
+            </section>
+        </a>
     </template>
 </body>
 
