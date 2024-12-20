@@ -8,13 +8,12 @@ require_once("../components/content-card/index.php");
 
 // データベースからイベント情報を取得
 try {
-    $sql = "SELECT id, title, tags, event_date, location, description, user_id FROM events ORDER BY event_date DESC LIMIT 4"; // 最新4件のイベントを取得
+    $sql = "SELECT id, title, tags, event_date, location, description, user_id FROM events ORDER BY event_date DESC"; // 最新4件のイベントを取得
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $events = $stmt->fetchAll(PDO::FETCH_ASSOC); // イベント情報を配列として取得
 } catch (PDOException $e) {
     $_SESSION['errors'] = ['データベースエラーが発生しました: ' . $e->getMessage()];
-    header('Location: /event');
     exit;
 }
 
@@ -27,6 +26,7 @@ try {
     <meta charset="UTF-8">
     <title>学内掲示板アプリ - イベント共有</title>
     <?php require_once('../lib/bootstrap.php'); ?>
+    <?php require_once('../lib/socket.io.php') ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 
@@ -52,18 +52,31 @@ try {
                 <?php if (empty($events)): ?>
                     <p>イベントはまだありません。</p>
                 <?php else: ?>
-                    <?php foreach ($events as $event): ?>
-                        <?php
-                        // イベント詳細を表示するためにContentCardを使う
-                        $content_card = new ContentCard($event);
-                        $content_card->render();
-                        ?>
-                    <?php endforeach; ?>
+                    <div id="content-card-container">
+                        <?php foreach ($events as $event): ?>
+                            <?php
+                            // イベント詳細を表示するためにContentCardを使う
+                            $content_card = new ContentCard($event);
+                            $content_card->render();
+                            ?>
+                        <?php endforeach; ?>
+                    </div>
                 <?php endif; ?>
 
             </section>
         </div>
     </div>
+
+    <template id="event-template">
+        <section class="mw-100 rounded p-3 mb-2 border">
+            <h5 class="m-0"></h5>
+
+            <h6 class="m-0 pt-2 fw-light"><i class="fa-solid fa-tag"></i> </h6>
+
+            <p class="w-75 pt-2 m-0"></p>
+            <h7 class="pt-2"></h7>
+        </section>
+    </template>
 </body>
 
 </html>

@@ -102,7 +102,10 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                     </div>
 
                     <!-- 送信ボタン -->
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end gap-3">
+                        <a href="/event" class="btn btn-secondary">
+                            キャンセル
+                        </a>
                         <button type="submit" class="btn btn-dark">
                             <i class="fas fa-plus"></i> イベントを作成
                         </button>

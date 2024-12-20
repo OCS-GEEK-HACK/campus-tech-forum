@@ -22,6 +22,13 @@ app.post("/new_room", (req, res) => {
   res.status(200).json({ message: "送信成功" });
 });
 
+app.post("/new_event", (req, res) => {
+  // 受け取ったイベント情報を全クライアントに通知
+  io.emit("new_event", req.body);
+
+  res.status(200).json({ message: "イベント作成情報を送信しました。" });
+});
+
 // /new_comment へのPOSTリクエストを処理
 app.post("/new_comment", (req, res) => {
   // 受け取った投稿を対象ルームのクライアントに送信

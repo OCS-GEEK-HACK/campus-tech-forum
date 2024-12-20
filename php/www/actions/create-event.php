@@ -89,6 +89,30 @@ try {
     // SQLを実行
     $stmt->execute();
 
+    // イベントの詳細情報を取得
+    $eventData = [
+        'title'       => htmlspecialchars($title),
+        'tags'        => htmlspecialchars($tags),
+        'event_date'  => htmlspecialchars($event_date),
+        'location'    => htmlspecialchars($location),
+        'description' => htmlspecialchars($description),
+        'createdAt'   => date('Y/m/d H:i'),
+        'createdBy'   => $_SESSION['user_displayName']
+    ];
+
+    // 新しいイベントをSocket.ioサーバーに送信
+    $url = "http://express:3000/new_event";  // Socket.ioサーバーのURL
+    $data = json_encode($eventData);
+
+    // cURLでSocket.ioサーバーにデータを送信
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_exec($ch);
+    curl_close($ch);
+
     // 正常終了したら、イベント一覧ページにリダイレクト
     $_SESSION['success'] = 'イベントを作成しました！';
     header('Location: /event');
