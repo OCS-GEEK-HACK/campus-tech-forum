@@ -72,7 +72,6 @@ try {
                         <?php endforeach; ?>
                     </div>
 
-
                     <!-- 詳細情報 -->
                     <ul class="list-unstyled">
                         <li><i class="fas fa-map-marker-alt me-2"></i><strong>場所:</strong> <?= htmlspecialchars($event['location'], ENT_QUOTES, 'UTF-8'); ?></li>
@@ -103,14 +102,18 @@ try {
 
                     <!-- コメント投稿フォーム -->
                     <h2 class="mt-5"><i class="fas fa-pen me-2"></i>コメントを投稿する</h2>
-                    <form action="/event/comment.php" method="POST" class="mt-4">
+                    <form action="/actions/event-comment.php" method="POST" class="mt-4">
                         <div class="mb-3">
-                            <textarea name="comment" class="form-control" rows="5" placeholder="コメントを入力してください..."></textarea>
+                            <textarea name="content" class="form-control" rows="5" placeholder="コメントを入力してください..." required></textarea>
                         </div>
                         <input type="hidden" name="event_id" value="<?= $event_id; ?>">
-                        <button type="submit" class="btn btn-primary">投稿する</button>
+                        <div class="d-flex justify-content-end gap-3">
+                            <a href="/event" class="btn btn-secondary">
+                                キャンセル
+                            </a>
+                            <button type="submit" class="btn btn-dark">投稿する</button>
+                    </div>
                     </form>
-
                 <?php else: ?>
                     <!-- エラー表示 -->
                     <div class="alert alert-danger">
