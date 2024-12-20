@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学内掲示板アプリ - サインイン</title>
+    <title>学内掲示板 - サインアップ</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
 </head>
 
@@ -25,7 +25,11 @@ if (isset($_SESSION['user_id'])) {
                 <h2>学内掲示板アプリ</h2>
                 <h6>アカウントを作成またはログインしてください</h6>
                 </div>
-                <form method="POST" action="../../actions/signin.php">
+                <form method="POST" action="../../actions/signup.php">
+                    <div class="mb-3">
+                        <label for="name" class="form-label w-100">名前</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="山田太郎" required>
+                    </div>
                     <!-- メールアドレス -->
                     <div class="mb-3">
                         <label for="email" class="form-label w-100">メールアドレス</label>
@@ -46,10 +50,10 @@ if (isset($_SESSION['user_id'])) {
                     <!-- 送信ボタン -->
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-dark  w-100">
-                            サインイン
+                            サインアップ
                         </button>
                     </div>
-                    <a href="../signup/" class="text-decoration-none"><h6 class="text-center mt-3">アカウントをお持ちでない方</h6></a>
+                    <a href="../signin/" class="text-decoration-none"><h6 class="text-center mt-3">アカウントをお持ちの方</h6></a>
                 </form>
             </div>
         </div>
@@ -57,4 +61,3 @@ if (isset($_SESSION['user_id'])) {
 </body>
 
 </html>
-
