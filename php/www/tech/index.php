@@ -36,7 +36,7 @@ require_once("../components/content-card/index.php");
             <h4>最近の技術記事</h4>
                 <?php
                     for ($i = 0; $i < 4; $i++):
-                        $input_box = new ContentCard();
+                        $input_box = new ContentCard(null);
                         $input_box->render();
                     endfor;
                 ?>
