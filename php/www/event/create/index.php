@@ -54,7 +54,7 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                                placeholder="例: PostgreSQLハンズオンセミナー" 
                                value="<?= htmlspecialchars($old_input['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
                         <?php if (!empty($errors['title'])): ?>
-                            <p style="color: red;"><?= htmlspecialchars($errors['title'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p class="text-danger"><?= htmlspecialchars($errors['title'], ENT_QUOTES, 'UTF-8'); ?></p>
                         <?php endif; ?>
                     </div>
 
@@ -66,7 +66,7 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                                value="<?= htmlspecialchars($old_input['tags'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
                         <small class="form-text text-muted">カンマ区切りで複数のタグを入力してください。</small>
                         <?php if (!empty($errors['tags'])): ?>
-                            <p style="color: red;"><?= htmlspecialchars($errors['tags'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p class="text-danger"><?= htmlspecialchars($errors['tags'], ENT_QUOTES, 'UTF-8'); ?></p>
                         <?php endif; ?>
                     </div>
 
@@ -76,7 +76,7 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                         <input type="datetime-local" name="event_date" id="event_date" class="form-control" 
                                value="<?= htmlspecialchars($old_input['event_date'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
                         <?php if (!empty($errors['event_date'])): ?>
-                            <p style="color: red;"><?= htmlspecialchars($errors['event_date'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p class="text-danger"><?= htmlspecialchars($errors['event_date'], ENT_QUOTES, 'UTF-8'); ?></p>
                         <?php endif; ?>
                     </div>
 
@@ -87,7 +87,7 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                                placeholder="例: 渋谷カンファレンスルーム" 
                                value="<?= htmlspecialchars($old_input['location'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
                         <?php if (!empty($errors['location'])): ?>
-                            <p style="color: red;"><?= htmlspecialchars($errors['location'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p class="text-danger"><?= htmlspecialchars($errors['location'], ENT_QUOTES, 'UTF-8'); ?></p>
                         <?php endif; ?>
                     </div>
 
@@ -97,7 +97,7 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                         <textarea name="description" id="description" class="form-control" rows="5" 
                                   placeholder="イベントの詳細を入力してください" required><?= htmlspecialchars($old_input['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
                         <?php if (!empty($errors['description'])): ?>
-                            <p style="color: red;"><?= htmlspecialchars($errors['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p class="text-danger"><?= htmlspecialchars($errors['description'], ENT_QUOTES, 'UTF-8'); ?></p>
                         <?php endif; ?>
                     </div>
 
