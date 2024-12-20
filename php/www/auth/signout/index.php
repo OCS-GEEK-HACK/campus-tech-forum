@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    // セッションがない場合はサインインへリダイレクト
-    header("Location: /auth/signin");
-    exit;
-}
+require_once("../../lib/sesson-check.php");
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -27,7 +22,7 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="d-flex justify-content-center mb-3">
                         <button type="button" onclick="location.href='../../actions/signout.php'" class="btn btn-dark  w-100">
-                            サインイン
+                            サインアウト
                         </button>
                 </div>
                 <div class="d-flex justify-content-center">

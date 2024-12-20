@@ -1,15 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    // セッションがない場合はサインインへリダイレクト
-    header("Location: /auth/signin");
-    exit;
-}
 require_once("../lib/connect-db.php");
 require_once("../components/header/index.php");
 require_once("../components/sidebar/index.php");
 require_once("../components/article-card/index.php");
 require_once("../components/content-card/index.php");
+require_once("../lib/sesson-check.php");
 ?>
 
 <!DOCTYPE html>
