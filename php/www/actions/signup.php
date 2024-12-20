@@ -6,9 +6,9 @@ require_once('../lib/connect-db.php'); // DB接続処理 (PDOインスタンス�
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // フォームから受け取ったデータを取得
     $name = trim($_POST['name'] ?? '');
+    $displayName = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
-    // $password_confirm = $_POST['password_confirm'] ?? '';
 
     // 入力バリデーション
     if (empty($name) || empty($email) || empty($password)) {
@@ -16,12 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: /auth/signup/");
         exit();
     }
-
-    // if ($password !== $password_confirm) {
-    //     $_SESSION['error_message'] = "パスワードが一致しません。";
-    //     header("Location: /auth?mode=signup");
-    //     exit();
-    // }
 
     try {
         // メールアドレスの重複確認
@@ -39,8 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
         // ユーザーの新規登録
-        $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
+        $stmt = $pdo->prepare("INSERT INTO users (name, displayname, email, password) VALUES (:name, :displayname, :email, :password)");
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':displayname', $displayName, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':password', $hashedPassword, PDO::PARAM_STR);
         $stmt->execute();
@@ -51,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // ログインしてトップページにリダイレクト
         $_SESSION['user_id'] = $pdo->lastInsertId();
         $_SESSION['user_name'] = $name;
+        $_SESSION['user_displayName'] = $displayName;
         $_SESSION['user_email'] = $email;
 
         header("Location: /");
