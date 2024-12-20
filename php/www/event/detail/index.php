@@ -40,7 +40,6 @@ try {
     $stmt_comments->bindParam(':event_id', $event_id, PDO::PARAM_INT);
     $stmt_comments->execute();
     $comments = $stmt_comments->fetchAll(PDO::FETCH_ASSOC);
-
 } catch (PDOException $e) {
     $_SESSION['errors'] = ['データベースエラーが発生しました: ' . $e->getMessage()];
 }
@@ -53,6 +52,7 @@ try {
     <meta charset="UTF-8">
     <title>イベント詳細</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
+    <?php require_once('../../lib/socket.io-comments.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 
@@ -99,7 +99,7 @@ try {
 
                     <!-- コメント一覧 -->
                     <h2 class="mt-5"><i class="fas fa-comments me-2"></i>コメント一覧</h2>
-                    <div class="comments mt-4">
+                    <div id="comments" class="mt-4">
                         <?php if ($comments): ?>
                             <?php foreach ($comments as $comment): ?>
                                 <div class="comment mb-3 p-3 border rounded">
@@ -136,6 +136,14 @@ try {
             </div>
         </div>
     </div>
+
+    <template id="event-comment-template">
+        <div class="comment mb-3 p-3 border rounded">
+            <strong class="comment-name" ></strong>
+            <pre class="comment-comment" ></pre>
+            <small class="comment-createdat text-muted"></small>
+        </div>
+    </template>
 
 </body>
 
