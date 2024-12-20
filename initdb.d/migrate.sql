@@ -35,6 +35,18 @@ CREATE TABLE events (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE event_comments (
+    id SERIAL PRIMARY KEY, -- 自動で増加するID
+    event_id INT NOT NULL, -- どのイベントへのコメントか（eventsテーブルと紐付け）
+    user_id INT NOT NULL, -- コメントしたユーザーのID（usersテーブルと紐付け）
+    content TEXT NOT NULL, -- コメントの内容
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP, -- 作成日時
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP, -- 更新日時
+    -- 外部キーの設定
+    CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
 -- user_id 1 (Yamada) が作成したイベントを挿入
 -- 今日から2日後の14:00に設定する
 INSERT INTO events (user_id, title, tags, event_date, location, description) 
