@@ -1,10 +1,10 @@
 <?php
+require_once("../lib/sesson-check.php");
 require_once("../lib/connect-db.php");
 require_once("../components/header/index.php");
 require_once("../components/sidebar/index.php");
 require_once("../components/article-card/index.php");
 require_once("../components/content-card/index.php");
-require_once("../lib/sesson-check.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ require_once("../lib/sesson-check.php");
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板</title>
+    <title>学内掲示板アプリ - イベント共有</title>
     <?php require_once('../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
@@ -33,7 +33,7 @@ require_once("../lib/sesson-check.php");
             ?>
 
             <section class="p-4">
-            <h4>最近の投稿</h4>
+            <h4>最近のイベント</h4>
                 <?php
                     for ($i = 0; $i < 4; $i++):
                         $input_box = new ContentCard();

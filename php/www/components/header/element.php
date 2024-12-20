@@ -1,6 +1,6 @@
 <div class="header sticky-top bg-white border-bottom d-flex flex-column p-3">
     <div class="d-flex justify-content-between align-items-center w-100">
-        <h4 class="d-md-none mb-0">アイデア掲示板</h4>
+        <a href="/" class="h4 mb-0 text-decoration-none text-dark d-md-none d-block">学内掲示板アプリ</a>
         <div class="search-box align-items-center gap-2 d-md-flex d-none">
             <input type="text" class="form-control" placeholder="検索...">
             <button class="btn btn-dark"><i class="fas fa-search"></i></button>
@@ -18,7 +18,7 @@
 
     <!-- ハンバーガーメニューが表示される部分 -->
     <div class="collapse" id="sidebarMenu">
-        <nav class="sidebar-mobile bg-light d-md-none py-3 px-3">
+        <nav class="sidebar-mobile bg-light d-md-none py-3 px-3 mt-3">
             <div class="search-box d-flex align-items-center gap-2">
                 <input type="text" class="form-control" placeholder="検索...">
                 <button class="btn btn-dark"><i class="fas fa-search"></i></button>
