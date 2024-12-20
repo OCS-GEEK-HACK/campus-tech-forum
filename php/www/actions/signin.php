@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // 入力バリデーション
     if (empty($email) || empty($password)) {
         $_SESSION['error_message'] = "メールアドレスとパスワードを入力してください。";
-        header("Location: /auth");
+        header("Location: /auth/signin");
         exit();
     }
 
@@ -45,6 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // エラーがある場合はサインイン画面にリダイレクト
-    header("Location: /auth");
+    header("Location: /auth/signin");
     exit();
 }

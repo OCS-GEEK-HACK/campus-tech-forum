@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-    // セッションがない場合はサインインへリダイレクト
+    // セッションがある場合はホームへリダイレクト
     header("Location: /");
     exit;
 }
@@ -13,11 +13,11 @@ if (isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>学内掲示板 - サインイン</title>
-    <?php require_once('../lib/bootstrap.php'); ?>
+    <?php require_once('../../lib/bootstrap.php'); ?>
 </head>
 
-<body>
-    <div class="container mt-5 w-50">
+<body  class="vh-100">
+    <div class="container  h-100 d-flex justify-content-center align-items-center">
         <!-- フォーム部分 -->
         <div class="card shadow-sm">
             <div class="card-body">
@@ -25,7 +25,7 @@ if (isset($_SESSION['user_id'])) {
                 <h2>学内掲示板アプリ</h2>
                 <h6>アカウントを作成またはログインしてください</h6>
                 </div>
-                <form method="POST" action="../actions/signin.php">
+                <form method="POST" action="../../actions/signin.php">
                     <!-- メールアドレス -->
                     <div class="mb-3">
                         <label for="email" class="form-label w-100">メールアドレス</label>
