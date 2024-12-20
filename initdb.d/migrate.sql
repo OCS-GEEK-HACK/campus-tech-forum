@@ -9,12 +9,12 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,    -- password: ハッシュ化したパスワード
     bio TEXT,                         -- bio: 自己紹介や説明
     image TEXT,                       -- image: 画像のパス・base64
-    git_url VARCHAR(255),             --link:Githubのリンク
+    github_url VARCHAR(255),             --link:Githubのリンク
     x_url VARCHAR(255),             --link:Xのリンク
     portfolio_url VARCHAR(255)        --link:Githubのリンク
 );
 
-INSERT INTO users (name, displayName, bio, image, email, password, git_url, x_url, portfolio_url)
+INSERT INTO users (name, displayName, bio, image, email, password, github_url, x_url, portfolio_url)
 VALUES
 ('山田太郎', 'Taro Yamada', '日本のエンジニア。プログラミングが得意です。', 'path/to/image1.jpg', 'taro.yamada@example.com', crypt('password123', gen_salt('bf')),'' ,'' ,''),
 ('鈴木花子', 'Hanako Suzuki', 'ウェブデザイナー。美しいデザインを作成します。', 'path/to/image2.jpg', 'hanako.suzuki@example.com', crypt('mypassword', gen_salt('bf')), '' ,'' ,''),
