@@ -1,10 +1,10 @@
 <?php
+require_once("../lib/sesson-check.php");
 require_once("../lib/connect-db.php");
 require_once("../components/header/index.php");
 require_once("../components/sidebar/index.php");
 require_once("../components/article-card/index.php");
 require_once("../components/content-card/index.php");
-require_once("../lib/sesson-check.php");
 ?>
 
 <!DOCTYPE html>
