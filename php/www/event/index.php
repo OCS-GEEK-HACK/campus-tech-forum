@@ -46,7 +46,7 @@ try {
             <section class="p-4 d-flex flex-column gap-3">
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-0">最近のイベント</h4>
-                    <a href="/event/create/" class="btn btn-dark d-md-block d-none"><i class="fas fa-plus"></i> 投稿する</a>
+                    <a href="/event/create/" class="btn btn-dark d-block"><i class="fas fa-plus"></i> 投稿する</a>
                 </div>
 
                 <?php if (empty($events)): ?>
