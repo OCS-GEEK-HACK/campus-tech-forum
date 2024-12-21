@@ -141,10 +141,16 @@ try {
                     <div class="d-flex flex-wrap gap-3">
                         <?php if ($participants): ?>
                             <?php foreach ($participants as $participant): ?>
-                                <a href="/user/?user_id=<?= $participant['id'] ?>" class="text-dark text-decoration-none">
+                                <a href="/user/?user_id=<?= htmlspecialchars($participant['id'], ENT_QUOTES, 'UTF-8') ?>" class="text-dark text-decoration-none">
                                     <div class="d-flex justify-content-start align-items-center gap-2">
-                                        <img src="<?= htmlspecialchars($participant['image']) ?>" class="rounded-circle border" style="width: 50px; height: 50px;" alt="<?= htmlspecialchars($participant['displayname']) ?>">
-                                        <p class="small m-0"><i class="fas fa-user me-1"></i><?= htmlspecialchars($participant['displayname']) ?></p>
+                                        <?php if (!empty($participant['image'])): ?>
+                                            <img src="<?= htmlspecialchars($participant['image'], ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle border" style="width: 50px; height: 50px;" alt="<?= htmlspecialchars($participant['displayname'], ENT_QUOTES, 'UTF-8') ?>">
+                                        <?php else: ?>
+                                            <div class="rounded-circle border d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; background-color: #e9ecef;">
+                                                <i class="fas fa-user text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                        <?php endif; ?>
+                                        <p class="small m-0"><i class="fas fa-user me-1"></i><?= htmlspecialchars($participant['displayname'], ENT_QUOTES, 'UTF-8') ?></p>
                                     </div>
                                 </a>
                             <?php endforeach; ?>
