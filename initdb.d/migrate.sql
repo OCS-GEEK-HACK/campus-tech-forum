@@ -16,7 +16,7 @@ CREATE TABLE users (
 
 INSERT INTO users (name, displayName, bio, image, email, password, github_url, x_url, portfolie_url)
 VALUES
-('山田太郎', 'Taro Yamada', '日本のエンジニア。プログラミングが得意です。', 'https://irasutoya.jp/wp-content/uploads/2021/01/kawa-pikach-no-irasuto-t-mei.png', 'taro.yamada@example.com', crypt('password123', gen_salt('bf')),'github.com' ,'x.com' ,'taro.yamada@example.com'),
+('山田太郎', 'Taro Yamada', '日本のエンジニア。プログラミングが得意です。', 'https://irasutoya.jp/wp-content/uploads/2021/01/kawa-pikach-no-irasuto-t-mei.png', 'taro.yamada@example.com', crypt('password123', gen_salt('bf')),'https://github.com' ,'https://x.com' ,''),
 ('鈴木花子', 'Hanako Suzuki', 'ウェブデザイナー。美しいデザインを作成します。', '', 'hanako.suzuki@example.com', crypt('mypassword', gen_salt('bf')), '' ,'' ,''),
 ('佐藤一郎', 'Ichiro Sato', 'システムアーキテクト。技術的な問題を解決するのが得意です。', 'path/to/image3.jpg', 'ichiro.sato@example.com', crypt('securepass', gen_salt('bf')), '' ,'' ,'');
 
