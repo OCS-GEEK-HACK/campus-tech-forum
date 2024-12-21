@@ -32,7 +32,7 @@ require_once("../components/content-card/index.php");
                 $header->render();
             ?>
 
-            <section class="p-4">
+            <section class="p-4 container">
                 <h4>最近のアイデア</h4>
                 <?php
                     for ($i = 0; $i < 4; $i++):

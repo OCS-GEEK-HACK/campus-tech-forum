@@ -40,7 +40,7 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
             $header->render();
             ?>
 
-            <section class="p-4 d-flex flex-column gap-3">
+            <section class="p-4 d-flex flex-column gap-3 container">
                 <div class="d-flex w-100 justify-content-between">
                     <h2>イベントを作成</h2>
                 </div>

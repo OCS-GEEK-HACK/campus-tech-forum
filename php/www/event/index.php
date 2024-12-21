@@ -42,7 +42,7 @@ try {
             $header = new Header();
             $header->render();
             ?>
-            <section class="p-4 d-flex flex-column gap-3">
+            <section class="p-4 d-flex flex-column gap-3 container">
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-0">イベント一覧</h4>
                     <a href="/event/create/" class="btn btn-dark d-block"><i class="fas fa-plus"></i> 投稿する</a>

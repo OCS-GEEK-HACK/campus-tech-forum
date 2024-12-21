@@ -35,7 +35,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             $header = new Header();
             $header->render();
             ?>
-            <section class="p-4">
+            <section class="p-4 container">
                 <?php if (empty($user)) : ?>
                     <div class="alert alert-danger">
                         <strong>エラー:</strong> ユーザーが存在しません。

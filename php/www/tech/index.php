@@ -19,26 +19,26 @@ require_once("../components/content-card/index.php");
 
 <body>
     <div class="d-flex">
-        
-        <?php 
-            $sidebar = new Sidebar();
-            $sidebar->render();
+
+        <?php
+        $sidebar = new Sidebar();
+        $sidebar->render();
         ?>
 
         <!-- メインコンテンツ -->
         <div class="content w-100 ms-md-4">
-            <?php 
-                $header = new Header();
-                $header->render();
+            <?php
+            $header = new Header();
+            $header->render();
             ?>
 
-            <section class="p-4">
-            <h4>最近の技術記事</h4>
+            <section class="p-4 container">
+                <h4>最近の技術記事</h4>
                 <?php
-                    for ($i = 0; $i < 4; $i++):
-                        $input_box = new ContentCard(null);
-                        $input_box->render();
-                    endfor;
+                for ($i = 0; $i < 4; $i++):
+                    $input_box = new ContentCard(null);
+                    $input_box->render();
+                endfor;
                 ?>
             </section>
 
