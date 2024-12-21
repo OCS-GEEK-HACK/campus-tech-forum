@@ -63,7 +63,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                 <div class="col">
                                     <h3 class="mb-0"><?= htmlspecialchars($user['displayname']) ?></h3>
                                     <p class="text-secondary mb-1">@<?= htmlspecialchars($user['name']) ?></p>
-                                    <p class="mb-2"><?= !empty($user['bio']) ? nl2br(htmlspecialchars($user['bio'])) : "" ?></p>
+                                    <p class="mb-2 text-break"><?= !empty($user['bio']) ? nl2br(htmlspecialchars($user['bio'])) : "" ?></p>
                                     <ul class="d-flex flex-wrap mb-0 p-0 gap-2">
                                         <?php if (!empty($user['github_url'])): ?>
                                             <li class="list-inline-item m-0">
