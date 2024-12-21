@@ -48,7 +48,7 @@ try {
                         <?php if (empty($events)): ?>
                             <p>イベントはまだありません。</p>
                         <?php else: ?>
-                            <div id="content-card-container">
+                            <div id="content-card-container" class="row">
                                 <?php foreach ($events as $event): ?>
                                     <?php
                                     $card = new ArticleCard($event["title"], $event["description"], "/event/detail?event_id=".$event["id"], $event["event_date"]."@".$event["location"]);
