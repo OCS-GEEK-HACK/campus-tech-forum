@@ -47,13 +47,24 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                             <?php if (empty($user['image'])):?>
                                 <i class="fa-solid fa-user fs-1"></i>
                             <?php else:?>
-                                <img src=<?=$user['image']?> alt="アイコン" width="100%" height="100%">
+                                <img src=<?=$user['image']?> class="rounded-circle border" alt="アイコン" width="100%" height="100%">
                             <?php endif;?>
                             </div>
                             <div class="col-10">
                                 <h3><?php echo $user['displayname']?></h3>
                                 <h7 class="text-secondary">@<?php echo $user['name']?></h7>
                                 <p><?php echo $user['bio']?></p>
+                                <ul class="list-group list-unstyled list-group-horizontal">
+                                    <?php if (!empty($user['github_url'])):?>
+                                    <li class="border rounded m-1"><i class="fa-brands fa-github"></i><?php echo $user['github_url']?></li>
+                                    <?php endif;?>
+                                    <?php if (!empty($user['x_url'])):?>
+                                    <li class="border rounded m-1"><i class="fa-solid fa-x"></i><?php echo $user['x_url']?></li>
+                                    <?php endif;?>
+                                    <?php if (!empty($user['portfolio_url'])):?>
+                                    <li class="border rounded m-1"><?php echo $user['portfolio_url']?></li>
+                                    <?php endif;?>
+                                </ul>
                             </div>
                         </div>
                     </div>
