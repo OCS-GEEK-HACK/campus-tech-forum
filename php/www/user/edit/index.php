@@ -14,7 +14,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板アプリ - プロフィール編集</title>
+    <title>オーシャン掲示板 - プロフィール編集</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
     <script rel="stylesheet" src="/js/profile-edit.js"></script>

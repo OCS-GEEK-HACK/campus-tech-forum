@@ -23,7 +23,7 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板アプリ - イベント共有</title>
+    <title>オーシャン掲示板 - イベント共有</title>
     <?php require_once('../lib/bootstrap.php'); ?>
     <?php require_once('../lib/socket.io.php') ?>
     <link rel="stylesheet" href="/style/main.css">

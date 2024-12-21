@@ -17,7 +17,7 @@ require_once("../../lib/session-check.php");
         <div class="card shadow-sm">
             <div class="card-body">
                 <div class="text-center">
-                <h2>学内掲示板アプリ</h2>
+                <h2>オーシャン掲示板</h2>
                 <h6>サインアウトしますか？</h6>
                 </div>
                 <div class="d-flex justify-content-center mb-3">

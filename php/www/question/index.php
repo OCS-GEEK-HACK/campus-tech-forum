@@ -12,7 +12,7 @@ require_once("../components/content-card/index.php");
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板アプリ - 質問</title>
+    <title>オーシャン掲示板 - 質問</title>
     <?php require_once('../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>

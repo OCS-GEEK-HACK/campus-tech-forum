@@ -18,7 +18,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板アプリ - プロフィール</title>
+    <title>オーシャン掲示板 - プロフィール</title>
     <?php require_once('../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>

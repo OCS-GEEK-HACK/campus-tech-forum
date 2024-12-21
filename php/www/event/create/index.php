@@ -14,7 +14,7 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板アプリ - イベント共有</title>
+    <title>オーシャン掲示板 - イベント共有</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
     <style>
