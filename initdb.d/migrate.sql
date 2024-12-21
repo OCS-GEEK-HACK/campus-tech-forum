@@ -47,6 +47,20 @@ CREATE TABLE event_comments (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE event_participants (
+    id SERIAL PRIMARY KEY,               -- 主キー
+    event_id INT NOT NULL,               -- イベントID (eventsテーブルと紐付け)
+    user_id INT NOT NULL,                -- ユーザーID (usersテーブルと紐付け)
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP, -- 参加日時
+
+    -- 外部キーの設定
+    CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+
+    -- ユニーク制約: 同じユーザーが同じイベントに重複して参加できないようにする
+    CONSTRAINT unique_event_user UNIQUE (event_id, user_id)
+);
+
 -- user_id 1 (Yamada) が作成したイベントを挿入
 -- 今日から2日後の14:00に設定する
 INSERT INTO events (user_id, title, tags, event_date, location, description) 
