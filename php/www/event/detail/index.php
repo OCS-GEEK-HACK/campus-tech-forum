@@ -57,7 +57,7 @@ try {
     }
 
 
-    $sql_participants = "SELECT u.displayName, u.image FROM event_participants ep
+    $sql_participants = "SELECT u.displayname, u.image FROM event_participants ep
                      JOIN users u ON ep.user_id = u.id
                      WHERE ep.event_id = :event_id";
     $stmt_participants = $pdo->prepare($sql_participants);
@@ -141,9 +141,9 @@ try {
                     <div class="d-flex flex-wrap gap-3">
                         <?php if ($participants): ?>
                             <?php foreach ($participants as $participant): ?>
-                                <div class="text-center">
-                                    <img src="<?= htmlspecialchars($participant['image']) ?>" class="rounded-circle border" style="width: 50px; height: 50px;" alt="<?= htmlspecialchars($participant['displayName']) ?>">
-                                    <p class="small mt-2"><i class="fas fa-user me-1"></i><?= htmlspecialchars($participant['displayName']) ?></p>
+                                <div class="d-flex justify-content-start align-items-center gap-2">
+                                    <img src="<?= htmlspecialchars($participant['image']) ?>" class="rounded-circle border" style="width: 50px; height: 50px;" alt="<?= htmlspecialchars($participant['displayname']) ?>">
+                                    <p class="small mt-2"><i class="fas fa-user me-1"></i><?= htmlspecialchars($participant['displayname']) ?></p>
                                 </div>
                             <?php endforeach; ?>
                         <?php else: ?>
