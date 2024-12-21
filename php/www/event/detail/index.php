@@ -8,6 +8,9 @@ require_once("../../components/sidebar/index.php");
 $event = null;
 $event_id = null;
 $comments = null;
+$is_participating = false;
+$participants = [];
+
 
 // イベントIDが存在しなかった場合のエラー処理
 if (!isset($_GET['event_id']) || !is_numeric($_GET['event_id'])) {
@@ -40,6 +43,27 @@ try {
     $stmt_comments->bindParam(':event_id', $event_id, PDO::PARAM_INT);
     $stmt_comments->execute();
     $comments = $stmt_comments->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($event_id && isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+
+        // 現在のユーザーが参加済みか確認
+        $sql_check_participation = "SELECT id FROM event_participants WHERE event_id = :event_id AND user_id = :user_id LIMIT 1";
+        $stmt_check = $pdo->prepare($sql_check_participation);
+        $stmt_check->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+        $stmt_check->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt_check->execute();
+        $is_participating = $stmt_check->fetch(PDO::FETCH_ASSOC) !== false;
+    }
+
+
+    $sql_participants = "SELECT u.displayName, u.image FROM event_participants ep
+                     JOIN users u ON ep.user_id = u.id
+                     WHERE ep.event_id = :event_id";
+    $stmt_participants = $pdo->prepare($sql_participants);
+    $stmt_participants->bindParam(':event_id', $event_id, PDO::PARAM_INT);
+    $stmt_participants->execute();
+    $participants = $stmt_participants->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $_SESSION['errors'] = ['データベースエラーが発生しました: ' . $e->getMessage()];
 }
@@ -97,6 +121,36 @@ try {
 
                     <hr>
 
+                    <!-- 参加/キャンセルボタン -->
+                    <form action="/actions/event-participation.php" method="POST" class="mb-3 text-end">
+                        <input type="hidden" name="event_id" value="<?= $event_id; ?>">
+                        <?php if ($is_participating): ?>
+                            <button type="submit" name="action" value="cancel" class="btn btn-danger">
+                                <i class="fas fa-times me-1"></i> キャンセルする
+                            </button>
+                        <?php else: ?>
+                            <button type="submit" name="action" value="join" class="btn btn-primary">
+                                <i class="fas fa-check me-1"></i> 参加する
+                            </button>
+                        <?php endif; ?>
+
+                    </form>
+
+                    <!-- 参加者一覧 -->
+                    <h3 class="mt-4"><i class="fas fa-users me-2"></i>参加者一覧</h3>
+                    <div class="d-flex flex-wrap gap-3">
+                        <?php if ($participants): ?>
+                            <?php foreach ($participants as $participant): ?>
+                                <div class="text-center">
+                                    <img src="<?= htmlspecialchars($participant['image']) ?>" class="rounded-circle border" style="width: 50px; height: 50px;" alt="<?= htmlspecialchars($participant['displayName']) ?>">
+                                    <p class="small mt-2"><i class="fas fa-user me-1"></i><?= htmlspecialchars($participant['displayName']) ?></p>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="text-muted"><i class="fas fa-info-circle me-2"></i>このイベントにはまだ参加者がいません。</p>
+                        <?php endif; ?>
+                    </div>
+
                     <!-- コメント一覧 -->
                     <h2 class="mt-5"><i class="fas fa-comments me-2"></i>コメント一覧</h2>
                     <div id="comments" class="mt-4">
@@ -109,7 +163,7 @@ try {
                                 </div>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <p>まだコメントはありません。</p>
+                            <p class="text-muted"><i class="fas fa-info-circle me-2"></i>コメントはまだありません。最初のコメントを投稿しましょう！</p>
                         <?php endif; ?>
                     </div>
 
@@ -122,11 +176,21 @@ try {
                         <input type="hidden" name="event_id" value="<?= $event_id; ?>">
                         <div class="d-flex justify-content-end gap-3">
                             <a href="/event" class="btn btn-secondary">
-                                キャンセル
+                                戻る
                             </a>
                             <button type="submit" class="btn btn-dark">投稿する</button>
                         </div>
                     </form>
+                    <?php if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])): ?>
+                        <div class="alert alert-danger my-2">
+                            <?php foreach ($_SESSION['errors'] as $error): ?>
+                                <p class="m-0"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
+                            <?php endforeach; ?>
+                            <?php unset($_SESSION['errors']); // 表示後にクリア 
+                            ?>
+                        </div>
+                    <?php endif; ?>
+
                 <?php else: ?>
                     <!-- エラー表示 -->
                     <div class="alert alert-danger">
@@ -139,8 +203,8 @@ try {
 
     <template id="event-comment-template">
         <div class="comment mb-3 p-3 border rounded">
-            <strong class="comment-name" ></strong>
-            <pre class="comment-comment" ></pre>
+            <strong class="comment-name"></strong>
+            <pre class="comment-comment"></pre>
             <small class="comment-createdat text-muted"></small>
         </div>
     </template>
