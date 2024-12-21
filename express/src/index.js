@@ -22,6 +22,23 @@ app.post("/new_room", (req, res) => {
   res.status(200).json({ message: "送信成功" });
 });
 
+app.post("/new_event", (req, res) => {
+  // 受け取ったイベント情報を全クライアントに通知
+  io.emit("new_event", req.body);
+
+  res.status(200).json({ message: "イベント作成情報を送信しました。" });
+});
+
+app.post("/new_event_comment", (req, res) => {
+  // 受け取った投稿を対象ルームのクライアントに送信
+  const { event_id, ...rest } = req.body;
+
+  // roomIdを使って限定的に送信（ルームごとの通知）
+  io.to(event_id).emit("new_event_comment", rest);
+
+  res.status(200).json({ message: "送信成功" });
+});
+
 // /new_comment へのPOSTリクエストを処理
 app.post("/new_comment", (req, res) => {
   // 受け取った投稿を対象ルームのクライアントに送信
