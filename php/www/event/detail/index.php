@@ -166,7 +166,7 @@ try {
                             <?php foreach ($comments as $comment): ?>
                                 <div class="comment mb-3 p-3 border rounded">
                                     <strong><?= htmlspecialchars($comment['displayname'], ENT_QUOTES, 'UTF-8'); ?></strong>
-                                    <p><?= nl2br(htmlspecialchars($comment['content'], ENT_QUOTES, 'UTF-8')); ?></p>
+                                    <pre><?= htmlspecialchars($comment['content'], ENT_QUOTES, 'UTF-8'); ?></pre>
                                     <small class="text-muted"><?= date('Y/m/d H:i', strtotime($comment['created_at'])); ?></small>
                                 </div>
                             <?php endforeach; ?>
