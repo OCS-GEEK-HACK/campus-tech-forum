@@ -1,5 +1,5 @@
 <?php
-require_once("./lib/sesson-check.php");
+require_once("./lib/session-check.php");
 require_once("./lib/connect-db.php");
 require_once("./components/header/index.php");
 require_once("./components/sidebar/index.php");

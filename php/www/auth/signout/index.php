@@ -1,5 +1,5 @@
 <?php
-require_once("../../lib/sesson-check.php");
+require_once("../../lib/session-check.php");
 ?>
 <!DOCTYPE html>
 <html lang="ja">

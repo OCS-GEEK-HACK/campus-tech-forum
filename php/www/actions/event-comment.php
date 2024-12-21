@@ -1,5 +1,5 @@
 <?php
-require_once("../lib/sesson-check.php"); // セッションチェック
+require_once("../lib/session-check.php"); // セッションチェック
 require_once("../lib/connect-db.php");   // DB接続
 
 // コメントの送信先イベントIDと内容のバリデーション

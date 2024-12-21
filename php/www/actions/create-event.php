@@ -1,6 +1,6 @@
 <?php
 // セッションチェック & DB接続
-require_once("../lib/sesson-check.php");
+require_once("../lib/session-check.php");
 require_once("../lib/connect-db.php");
 
 // POSTリクエストのチェック

@@ -1,5 +1,5 @@
 <?php
-require_once("../lib/sesson-check.php");
+require_once("../lib/session-check.php");
 require_once("../lib/connect-db.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['event_id'], $_POST['action'])) {
