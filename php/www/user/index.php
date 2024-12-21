@@ -8,7 +8,7 @@ if(isset($_GET["user_id"])){
 }else{
     $id = $_SESSION["user_id"];
 }
-$stmt = $pdo->prepare("SELECT id, name, displayname, image, bio, github_url, x_url ,portfolio_url  FROM users WHERE id = :id LIMIT 1");
+$stmt = $pdo->prepare("SELECT id, name, displayname, image, bio, github_url, x_url ,portfolie_url  FROM users WHERE id = :id LIMIT 1");
 $stmt->bindValue(':id', $id, PDO::PARAM_STR);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -61,8 +61,8 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                     <?php if (!empty($user['x_url'])):?>
                                     <li class="border rounded m-1"><i class="fa-solid fa-x"></i><?php echo $user['x_url']?></li>
                                     <?php endif;?>
-                                    <?php if (!empty($user['portfolio_url'])):?>
-                                    <li class="border rounded m-1"><?php echo $user['portfolio_url']?></li>
+                                    <?php if (!empty($user['portfolie_url'])):?>
+                                    <li class="border rounded m-1"><?php echo $user['portfolie_url']?></li>
                                     <?php endif;?>
                                 </ul>
                             </div>
