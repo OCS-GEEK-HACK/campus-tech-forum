@@ -18,7 +18,7 @@
         </li>
         <hr>
         <li>
-            <a href="#" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-user me-2"></i> プロフィール</a>
+            <a href="/user" class="d-block py-2 px-3 text-dark text-decoration-none rounded hover-bg"><i class="fas fa-user me-2"></i> プロフィール</a>
         </li>
         <li>
             <a href="/auth/signout" class="d-block py-2 px-3 text-danger text-decoration-none rounded hover-bg-danger"><i class="fas fa-sign-out-alt me-2"></i> ログアウト</a>
