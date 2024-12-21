@@ -15,12 +15,14 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>学内掲示板アプリ - プロフィール</title>
     <?php require_once('../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
+
 <body>
     <div class="d-flex">
         <?php
@@ -41,27 +43,27 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <?php else : ?>
                     <section class="card mb-4 shadow-sm">
                         <div class="card-body">
-                            <div class="d-flex flex-sm-row flex-column gap-3 align-items-start">
+                            <div class="d-flex flex-<?= $id === $_SESSION["user_id"] ? "md" : "sm" ?>-row flex-column gap-3 align-items-start">
                                 <!-- プロフィール画像またはアイコン -->
                                 <div class="col-auto m-auto">
                                     <?php if (empty($user['image'])): ?>
                                         <div class="rounded-circle bg-light d-flex align-items-center justify-content-center border"
-                                             style="width: 100px; height: 100px;">
+                                            style="width: 100px; height: 100px;">
                                             <i class="fa-solid fa-user fs-1 text-muted"></i>
                                         </div>
                                     <?php else: ?>
                                         <img src="<?= htmlspecialchars($user['image']) ?>"
-                                             class="rounded-circle border"
-                                             alt="アイコン"
-                                             style="width: 100px; height: 100px;"
-                                             onerror="this.onerror=null;this.src='/default-avatar.png';">
+                                            class="rounded-circle border object-fit-cover"
+                                            alt="アイコン"
+                                            style="width: 100px; height: 100px;"
+                                            onerror="this.onerror=null;this.src='/default-avatar.png';">
                                     <?php endif; ?>
                                 </div>
                                 <!-- ユーザー情報 -->
                                 <div class="col">
                                     <h3 class="mb-0"><?= htmlspecialchars($user['displayname']) ?></h3>
                                     <p class="text-secondary mb-1">@<?= htmlspecialchars($user['name']) ?></p>
-                                    <p class="mb-2"><?= nl2br(htmlspecialchars($user['bio'])) ?></p>
+                                    <p class="mb-2"><?= !empty($user['bio']) ? nl2br(htmlspecialchars($user['bio'])) : "" ?></p>
                                     <ul class="d-flex flex-wrap mb-0 p-0 gap-2">
                                         <?php if (!empty($user['github_url'])): ?>
                                             <li class="list-inline-item m-0">
@@ -86,6 +88,14 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                         <?php endif; ?>
                                     </ul>
                                 </div>
+                                <?php if ($id === $_SESSION["user_id"]): ?>
+                                    <!-- 編集ボタン -->
+                                    <div class="m-md-auto ms-auto">
+                                        <a href="/user/edit" class="btn btn-primary">
+                                            <i class="fa-solid fa-pen-to-square me-2"></i> プロフィールを編集
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </section>
@@ -94,4 +104,5 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         </div>
     </div>
 </body>
+
 </html>
