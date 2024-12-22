@@ -133,7 +133,12 @@ try {
                             ?>
                         </div>
                     <?php endif; ?>
-
+                    <?php if (!empty($_SESSION['success'])): ?>
+                        <div class="alert alert-success">
+                            <?= htmlspecialchars($_SESSION['success']) ?>
+                            <?php unset($_SESSION['success']); ?>
+                        </div>
+                    <?php endif; ?>
                 <?php else: ?>
                     <!-- エラー表示 -->
                     <div class="alert alert-danger">

@@ -44,6 +44,12 @@ try {
             $header->render();
             ?>
             <section class="p-4 d-flex flex-column gap-3 container">
+                <?php if (!empty($_SESSION['success'])): ?>
+                    <div class="alert alert-success">
+                        <?= htmlspecialchars($_SESSION['success']) ?>
+                        <?php unset($_SESSION['success']); ?>
+                    </div>
+                <?php endif; ?>
                 <div class="d-flex w-100 justify-content-between">
                     <h4>アイデア一覧</h4>
                     <a href="/idea/create/" class="btn btn-dark d-block"><i class="fas fa-plus"></i> 投稿する</a>

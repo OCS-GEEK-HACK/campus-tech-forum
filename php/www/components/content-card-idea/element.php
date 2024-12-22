@@ -1,6 +1,6 @@
 <?php if (isset($idea)): ?>
     <a href="/idea/detail?idea_id=<?= htmlspecialchars($idea['id'], ENT_QUOTES, 'UTF-8'); ?>" class="text-decoration-none text-dark">
-        <section class="mw-100 rounded p-3 mb-2 border">
+        <section class="mw-100 card rounded p-3 mb-2 border">
             <h5 class="m-0"><?= htmlspecialchars($idea['title'], ENT_QUOTES, 'UTF-8'); ?></h5>
 
             <?php

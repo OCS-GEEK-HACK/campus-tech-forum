@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             curl_close($ch);
 
             // セッションメッセージ
-            $_SESSION['success'] = ['コメントが投稿されました。'];
+            $_SESSION['success'] = 'コメントが投稿されました。';
             header('Location: /event/detail/index.php?event_id=' . $event_id); // イベント詳細ページへリダイレクト
             exit;
 

@@ -146,7 +146,7 @@ try {
                                 <a href="/user/?user_id=<?= htmlspecialchars($participant['id'], ENT_QUOTES, 'UTF-8') ?>" class="text-dark text-decoration-none">
                                     <div class="d-flex justify-content-start align-items-center gap-2">
                                         <?php if (!empty($participant['image'])): ?>
-                                            <img src="<?= htmlspecialchars($participant['image'], ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle border" style="width: 50px; height: 50px;" alt="<?= htmlspecialchars($participant['displayname'], ENT_QUOTES, 'UTF-8') ?>">
+                                            <img src="<?= htmlspecialchars($participant['image'], ENT_QUOTES, 'UTF-8') ?>" class="rounded-circle border object-fit-cover" style="width: 50px; height: 50px;" alt="<?= htmlspecialchars($participant['displayname'], ENT_QUOTES, 'UTF-8') ?>">
                                         <?php else: ?>
                                             <div class="rounded-circle border d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; background-color: #e9ecef;">
                                                 <i class="fas fa-user text-muted" style="font-size: 24px;"></i>
@@ -166,7 +166,7 @@ try {
                     <div id="comments" class="mt-4">
                         <?php if ($comments): ?>
                             <?php foreach ($comments as $comment): ?>
-                                <div class="comment mb-3 p-3 border rounded">
+                                <div class="card comment mb-3 p-3 border rounded">
                                     <strong><?= htmlspecialchars($comment['displayname'], ENT_QUOTES, 'UTF-8'); ?></strong>
                                     <pre><?= htmlspecialchars($comment['content'], ENT_QUOTES, 'UTF-8'); ?></pre>
                                     <small class="text-muted"><?= date('Y/m/d H:i', strtotime($comment['created_at'])); ?></small>
@@ -198,6 +198,12 @@ try {
                             <?php endforeach; ?>
                             <?php unset($_SESSION['errors']); // 表示後にクリア 
                             ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($_SESSION['success'])): ?>
+                        <div class="alert alert-success">
+                            <?= htmlspecialchars($_SESSION['success']) ?>
+                            <?php unset($_SESSION['success']); ?>
                         </div>
                     <?php endif; ?>
 

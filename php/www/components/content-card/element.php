@@ -1,6 +1,6 @@
 <?php if (isset($event)): ?>
     <a href="/event/detail?event_id=<?= htmlspecialchars($event['id'], ENT_QUOTES, 'UTF-8'); ?>" class="text-decoration-none text-dark">
-        <section class="mw-100 rounded p-3 mb-2 border">
+        <section class="card mw-100 rounded p-3 mb-2 border">
             <h5 class="m-0"><?= htmlspecialchars($event['title'], ENT_QUOTES, 'UTF-8'); ?></h5>
 
             <?php
