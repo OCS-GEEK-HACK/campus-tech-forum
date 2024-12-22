@@ -13,11 +13,7 @@ body {
     color: #ffffff; /* 白い文字 */
 }
 
-.sidebar a:not(.hover-bg-danger) {
-    color: #ffffff; /* サイドバーリンクを白い文字に */
-}
-
-.sidebar a:not(.hover-bg-danger):hover {
+.sidebar a:not(.hover-bg-danger, .h4):hover {
     background-color: #013a63; /* ホバー時のさらに濃い青 */
     color: #ffffff !important; /* サイドバーリンクを白い文字に */
 }
