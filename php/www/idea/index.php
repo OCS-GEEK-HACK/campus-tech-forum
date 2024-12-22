@@ -60,7 +60,6 @@ try {
 
             </section>
 
-
         </div>
     </div>
 

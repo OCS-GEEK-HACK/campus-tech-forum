@@ -9,7 +9,6 @@ $idea = null;
 $idea_id = null;
 $comments = null;
 
-
 // イベントIDが存在しなかった場合のエラー処理
 if (!isset($_GET['idea_id']) || !is_numeric($_GET['idea_id'])) {
     $_SESSION['errors'] = ['不正なアイデアIDです。'];

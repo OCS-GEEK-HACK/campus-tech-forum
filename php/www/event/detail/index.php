@@ -11,7 +11,6 @@ $comments = null;
 $is_participating = false;
 $participants = [];
 
-
 // イベントIDが存在しなかった場合のエラー処理
 if (!isset($_GET['event_id']) || !is_numeric($_GET['event_id'])) {
     $_SESSION['errors'] = ['不正なイベントIDです。'];
@@ -55,7 +54,6 @@ try {
         $stmt_check->execute();
         $is_participating = $stmt_check->fetch(PDO::FETCH_ASSOC) !== false;
     }
-
 
     $sql_participants = "SELECT u.displayname, u.image, u.id FROM event_participants ep
                      JOIN users u ON ep.user_id = u.id
