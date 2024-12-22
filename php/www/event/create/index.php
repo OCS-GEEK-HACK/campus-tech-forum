@@ -46,69 +46,66 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                 </div>
 
                 <!-- イベント作成フォーム -->
-                <form action="/actions/create-event.php" method="POST" class="p-md-4 p-none bg-white shadow rounded">
+                <form action="/actions/create-event.php" method="POST" class="card p-none shadow rounded">
                     <!-- タイトル -->
-                    <div class="mb-3">
-                        <label for="title" class="form-label w-100">イベントタイトル</label>
-                        <input type="text" name="title" id="title" class="form-control" 
-                               placeholder="例: PostgreSQLハンズオンセミナー" 
-                               value="<?= htmlspecialchars($old_input['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
-                        <?php if (!empty($errors['title'])): ?>
-                            <p class="text-danger"><?= htmlspecialchars($errors['title'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        <?php endif; ?>
-                    </div>
-
-                    <!-- タグ -->
-                    <div class="mb-3">
-                        <label for="tags" class="form-label w-100">タグ</label>
-                        <input type="text" name="tags" id="tags" class="form-control" 
-                               placeholder="例: セミナー, ハンズオン, PostgreSQL" 
-                               value="<?= htmlspecialchars($old_input['tags'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
-                        <small class="form-text text-muted">カンマ区切りで複数のタグを入力してください。</small>
-                        <?php if (!empty($errors['tags'])): ?>
-                            <p class="text-danger"><?= htmlspecialchars($errors['tags'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        <?php endif; ?>
-                    </div>
-
-                    <!-- 日程 -->
-                    <div class="mb-3">
-                        <label for="event_date" class="form-label w-100">日程</label>
-                        <input type="datetime-local" name="event_date" id="event_date" class="form-control" 
-                               value="<?= htmlspecialchars($old_input['event_date'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
-                        <?php if (!empty($errors['event_date'])): ?>
-                            <p class="text-danger"><?= htmlspecialchars($errors['event_date'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        <?php endif; ?>
-                    </div>
-
-                    <!-- 場所 -->
-                    <div class="mb-3">
-                        <label for="location" class="form-label w-100">場所</label>
-                        <input type="text" name="location" id="location" class="form-control" 
-                               placeholder="例: 渋谷カンファレンスルーム" 
-                               value="<?= htmlspecialchars($old_input['location'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
-                        <?php if (!empty($errors['location'])): ?>
-                            <p class="text-danger"><?= htmlspecialchars($errors['location'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        <?php endif; ?>
-                    </div>
-
-                    <!-- 内容 -->
-                    <div class="mb-3">
-                        <label for="description" class="form-label w-100">内容</label>
-                        <textarea name="description" id="description" class="form-control" rows="5" 
-                                  placeholder="イベントの詳細を入力してください" required><?= htmlspecialchars($old_input['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        <?php if (!empty($errors['description'])): ?>
-                            <p class="text-danger"><?= htmlspecialchars($errors['description'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        <?php endif; ?>
-                    </div>
-
-                    <!-- 送信ボタン -->
-                    <div class="d-flex justify-content-end gap-3">
-                        <a href="/event" class="btn btn-secondary">
-                            キャンセル
-                        </a>
-                        <button type="submit" class="btn btn-dark">
-                            <i class="fas fa-plus"></i> イベントを作成
-                        </button>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="title" class="form-label w-100">イベントタイトル</label>
+                            <input type="text" name="title" id="title" class="form-control"
+                                   placeholder="例: PostgreSQLハンズオンセミナー"
+                                   value="<?= htmlspecialchars($old_input['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+                            <?php if (!empty($errors['title'])): ?>
+                                <p class="text-danger"><?= htmlspecialchars($errors['title'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <!-- タグ -->
+                        <div class="mb-3">
+                            <label for="tags" class="form-label w-100">タグ</label>
+                            <input type="text" name="tags" id="tags" class="form-control"
+                                   placeholder="例: セミナー, ハンズオン, PostgreSQL"
+                                   value="<?= htmlspecialchars($old_input['tags'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+                            <small class="form-text text-muted">カンマ区切りで複数のタグを入力してください。</small>
+                            <?php if (!empty($errors['tags'])): ?>
+                                <p class="text-danger"><?= htmlspecialchars($errors['tags'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <!-- 日程 -->
+                        <div class="mb-3">
+                            <label for="event_date" class="form-label w-100">日程</label>
+                            <input type="datetime-local" name="event_date" id="event_date" class="form-control"
+                                   value="<?= htmlspecialchars($old_input['event_date'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+                            <?php if (!empty($errors['event_date'])): ?>
+                                <p class="text-danger"><?= htmlspecialchars($errors['event_date'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <!-- 場所 -->
+                        <div class="mb-3">
+                            <label for="location" class="form-label w-100">場所</label>
+                            <input type="text" name="location" id="location" class="form-control"
+                                   placeholder="例: 渋谷カンファレンスルーム"
+                                   value="<?= htmlspecialchars($old_input['location'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+                            <?php if (!empty($errors['location'])): ?>
+                                <p class="text-danger"><?= htmlspecialchars($errors['location'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <!-- 内容 -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label w-100">内容</label>
+                            <textarea name="description" id="description" class="form-control" rows="5"
+                                      placeholder="イベントの詳細を入力してください" required><?= htmlspecialchars($old_input['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                            <?php if (!empty($errors['description'])): ?>
+                                <p class="text-danger"><?= htmlspecialchars($errors['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <?php endif; ?>
+                        </div>
+                        <!-- 送信ボタン -->
+                        <div class="d-flex justify-content-end gap-3">
+                            <a href="/event" class="btn btn-secondary">
+                                キャンセル
+                            </a>
+                            <button type="submit" class="btn btn-dark">
+                                <i class="fas fa-plus"></i> イベントを作成
+                            </button>
+                        </div>
                     </div>
                 </form>
             </section>

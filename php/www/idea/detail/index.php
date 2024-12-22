@@ -99,7 +99,7 @@ try {
                     <div id="comments" class="mt-4">
                         <?php if ($comments): ?>
                             <?php foreach ($comments as $comment): ?>
-                                <div class="comment mb-3 p-3 border rounded">
+                                <div class="comment card mb-3 p-3 border rounded">
                                     <strong><?= htmlspecialchars($comment['displayname'], ENT_QUOTES, 'UTF-8'); ?></strong>
                                     <pre><?= htmlspecialchars($comment['content'], ENT_QUOTES, 'UTF-8'); ?></pre>
                                     <small class="text-muted"><?= date('Y/m/d H:i', strtotime($comment['created_at'])); ?></small>
@@ -150,7 +150,7 @@ try {
     </div>
 
     <template id="idea-comment-template">
-        <div class="comment mb-3 p-3 border rounded">
+        <div class="comment card mb-3 p-3 border rounded">
             <strong class="comment-name"></strong>
             <pre class="comment-comment"></pre>
             <small class="comment-createdat text-muted"></small>

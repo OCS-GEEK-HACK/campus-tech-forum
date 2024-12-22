@@ -218,7 +218,7 @@ try {
     </div>
 
     <template id="event-comment-template">
-        <div class="comment mb-3 p-3 border rounded">
+        <div class="card comment mb-3 p-3 border rounded">
             <strong class="comment-name"></strong>
             <pre class="comment-comment"></pre>
             <small class="comment-createdat text-muted"></small>

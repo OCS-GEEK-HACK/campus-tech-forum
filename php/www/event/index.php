@@ -78,7 +78,7 @@ try {
 
     <template id="event-template">
         <a href="" class="text-decoration-none text-dark">
-            <section class="mw-100 rounded p-3 mb-2 border">
+            <section class="mw-100 card rounded p-3 mb-2 border">
                 <h5 class="m-0"></h5>
 
                 <h6 class="m-0 pt-2 fw-light"><i class="fa-solid fa-tag"></i> </h6>

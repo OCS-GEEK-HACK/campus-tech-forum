@@ -1,31 +1,75 @@
 body {
     margin: 0;
+    background-color: #b3e5fc; /* 青みのある明るい背景 */
 }
 
 .sidebar {
     position: sticky;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100dvh; /* フルスクリーンの高さを維持 */
     z-index: 1;
-    /* サイドバーのz-indexを低く設定 */
+    background-color: #01579b; /* 濃い青 */
+    color: #ffffff; /* 白い文字 */
+}
+
+.sidebar a:not(.hover-bg-danger) {
+    color: #ffffff; /* サイドバーリンクを白い文字に */
+}
+
+.sidebar a:not(.hover-bg-danger):hover {
+    background-color: #013a63; /* ホバー時のさらに濃い青 */
+    color: #ffffff !important; /* サイドバーリンクを白い文字に */
 }
 
 .header {
     position: sticky;
     top: 0;
     z-index: 10;
-    /* ヘッダーのz-indexをサイドバーより高く設定 */
-    background-color: #fff;
-    /* 背景色を追加して下の要素を隠す */
+    background-color: #0277bd; /* 少し明るい濃い青 */
+    color: #ffffff; /* 白い文字 */
+}
+
+.header .btn-dark {
+    background-color: #01579b; /* ボタンの背景色を濃い青 */
+    border: none;
+}
+
+.header .btn-dark:hover {
+    background-color: #002f6c; /* ボタンホバー時さらに濃い色 */
+}
+
+.card {
+    background-color: #e1f5fe; /* 淡い青 */
+    border: 1px solid #01579b; /* 濃い青のボーダー */
+}
+
+.card h5 {
+    color: #0277bd; /* タイトルの文字色を濃い青に */
+}
+
+.card .btn-dark {
+    background-color: #01579b; /* ボタン背景を濃い青 */
+    border: none;
+}
+
+.card .btn-dark:hover {
+    background-color: #002f6c; /* ホバー時さらに濃い色 */
 }
 
 .hover-bg:hover {
-    background-color: #e6e6e6;
-    /* ホバー時に薄いグレー */
+    background-color: #81d4fa; /* ホバー時に明るい青 */
 }
 
 .hover-bg-danger:hover {
-    background-color: #f8d7da;
-    /* ホバー時に薄い赤色 */
+    background-color: #e57373 !important; /* 危険アクションのホバー時に赤みを強調 */
+    color: #fff !important;
+}
+
+.container h4 {
+    color: #01579b; /* セクションタイトルを濃い青に */
+}
+
+.container p {
+    color: #01579b; /* テキスト全体も濃い青で統一 */
 }
