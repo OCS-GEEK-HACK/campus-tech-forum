@@ -3,8 +3,16 @@ require_once("../lib/session-check.php");
 require_once("../lib/connect-db.php");
 require_once("../components/header/index.php");
 require_once("../components/sidebar/index.php");
-require_once("../components/article-card/index.php");
-require_once("../components/content-card/index.php");
+require_once("../components/content-card-idea/index.php");
+try {
+    $sql = "SELECT id, title, tags, description, user_id FROM ideas ORDER BY updated_at DESC"; // 最新4件のイベントを取得
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $ideas = $stmt->fetchAll(PDO::FETCH_ASSOC); // イベント情報を配列として取得
+} catch (PDOException $e) {
+    $_SESSION['errors'] = ['データベースエラーが発生しました: ' . $e->getMessage()];
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +22,12 @@ require_once("../components/content-card/index.php");
     <meta charset="UTF-8">
     <title>学内掲示板アプリ - アイデア共有</title>
     <?php require_once('../lib/bootstrap.php'); ?>
+    <?php require_once('../lib/socket.io.php') ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 
 <body>
-    <div class="d-flex">
-        
+    <div class="d-flex">    
         <?php 
             $sidebar = new Sidebar();
             $sidebar->render();
@@ -31,20 +39,41 @@ require_once("../components/content-card/index.php");
                 $header = new Header();
                 $header->render();
             ?>
+            <section class="p-4 d-flex flex-column gap-3">
+                <div class="d-flex w-100 justify-content-between">
+                <h4>アイデア一覧</h4>
+                <a href="/idea/create/" class="btn btn-dark d-block"><i class="fas fa-plus"></i> 投稿する</a>
+                </div>
 
-            <section class="p-4">
-                <h4>最近のアイデア</h4>
-                <?php
-                    for ($i = 0; $i < 4; $i++):
-                        $input_box = new ContentCard(null);
-                        $input_box->render();
-                    endfor;
-                ?>
+                <?php if (empty($ideas)): ?>
+                    <p>アイデアはまだありません。</p>
+                <?php else: ?>
+                    <div id="content-card-container">
+                        <?php foreach ($ideas as $idea): ?>
+                            <?php
+                            $content_card = new ContentCard($idea);
+                            $content_card->render();
+                            ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
             </section>
-
-
         </div>
     </div>
+
+    <template id="idea-template">
+        <a href="" class="text-decoration-none text-dark">
+            <section class="mw-100 rounded p-3 mb-2 border">
+                <h5 class="m-0"></h5>
+
+                <h6 class="m-0 pt-2 fw-light"><i class="fa-solid fa-tag"></i> </h6>
+
+                <p class="w-75 pt-2 m-0"></p>
+                <h7 class="pt-2"></h7>
+            </section>
+        </a>
+    </template>
 </body>
 
 </html>
