@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="card shadow-sm">
             <div class="card-body">
                 <div class="text-center">
-                <h2>学内掲示板アプリ</h2>
+                <h2>オーシャン掲示板</h2>
                 <h6>アカウントを作成またはログインしてください</h6>
                 </div>
                 <form method="POST" action="../../actions/signup.php">

@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $postData = $stmt->fetch(PDO::FETCH_ASSOC); // 投稿データを取得
 
             // コメントをSocket.ioサーバーへ送信
-            $url = "http://express:3000/new_event_comment"; // SocketサーバーのURL
+            $url = getenv("ENV") == "dev" ? "http://express:3000/new_event_comment" : getenv('EXPRESS_URL')."/new_event_comment" ;
             $data = json_encode([
                 'event_id' => $event_id,
                 'user_name' => htmlspecialchars($display_name),

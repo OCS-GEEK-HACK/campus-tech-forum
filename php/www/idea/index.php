@@ -20,7 +20,7 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板アプリ - アイデア共有</title>
+    <title>オーシャン掲示板 - アイデア共有</title>
     <?php require_once('../lib/bootstrap.php'); ?>
     <?php require_once('../lib/socket.io.php') ?>
     <link rel="stylesheet" href="/style/main.css">
@@ -39,7 +39,7 @@ try {
                 $header = new Header();
                 $header->render();
             ?>
-            <section class="p-4 d-flex flex-column gap-3">
+            <section class="p-4 d-flex flex-column gap-3 container">
                 <div class="d-flex w-100 justify-content-between">
                 <h4>アイデア一覧</h4>
                 <a href="/idea/create/" class="btn btn-dark d-block"><i class="fas fa-plus"></i> 投稿する</a>
@@ -59,6 +59,8 @@ try {
                 <?php endif; ?>
 
             </section>
+
+
         </div>
     </div>
 

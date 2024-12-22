@@ -12,33 +12,33 @@ require_once("../components/content-card/index.php");
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板アプリ - 質問</title>
+    <title>オーシャン掲示板 - 質問</title>
     <?php require_once('../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 
 <body>
     <div class="d-flex">
-        
-        <?php 
-            $sidebar = new Sidebar();
-            $sidebar->render();
+
+        <?php
+        $sidebar = new Sidebar();
+        $sidebar->render();
         ?>
 
         <!-- メインコンテンツ -->
         <div class="content w-100 ms-md-4">
-            <?php 
-                $header = new Header();
-                $header->render();
+            <?php
+            $header = new Header();
+            $header->render();
             ?>
 
-            <section class="p-4">
-            <h4>最近の質問</h4>
+            <section class="p-4 container">
+                <h4>最近の質問</h4>
                 <?php
-                    for ($i = 0; $i < 4; $i++):
-                        $input_box = new ContentCard(null);
-                        $input_box->render();
-                    endfor;
+                for ($i = 0; $i < 4; $i++):
+                    $input_box = new ContentCard(null);
+                    $input_box->render();
+                endfor;
                 ?>
             </section>
 

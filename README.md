@@ -9,6 +9,7 @@ EXPRESS_PORT=3000
 EXPRESS_URL=http://localhost:3000
 CORS_URL=http://localhost
 DB_REPLICAS=1 # 起動しない場合は0
+ENV=dev
 # INITDB_VOLUME=./tmp:/docker-entrypoint-initdb.d
 ```
 

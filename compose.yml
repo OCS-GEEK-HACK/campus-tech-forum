@@ -10,6 +10,7 @@ services:
     depends_on:
       - db
     environment:
+      - ENV=${ENV}
       - DATABASE_URL=${DATABASE_URL}
       - EXPRESS_URL=${EXPRESS_URL}
       - TZ=Asia/Tokyo
