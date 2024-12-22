@@ -25,7 +25,11 @@ try {
     <meta charset="UTF-8">
     <title>オーシャン掲示板 - イベント共有</title>
     <?php require_once('../lib/bootstrap.php'); ?>
-    <?php require_once('../lib/socket.io.php') ?>
+    <?php
+    require_once('../lib/socket.io/index.php');
+    $socket_io = new SocketIO("event");
+    $socket_io->render();
+    ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 

@@ -74,7 +74,11 @@ try {
     <meta charset="UTF-8">
     <title>オーシャン掲示板 - イベント詳細</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
-    <?php require_once('../../lib/socket.io-comments.php'); ?>
+    <?php
+    require_once('../../lib/socket.io-comments/index.php');
+    $socket_io = new SocketIOMessage("event");
+    $socket_io->render();
+    ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 

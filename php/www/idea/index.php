@@ -22,7 +22,11 @@ try {
     <meta charset="UTF-8">
     <title>オーシャン掲示板 - アイデア共有</title>
     <?php require_once('../lib/bootstrap.php'); ?>
-    <?php require_once('../lib/socket.io.php') ?>
+    <?php
+    require_once('../lib/socket.io/index.php');
+    $socket_io = new SocketIO("idea");
+    $socket_io->render();
+    ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 
@@ -71,7 +75,6 @@ try {
                 <h6 class="m-0 pt-2 fw-light"><i class="fa-solid fa-tag"></i> </h6>
 
                 <p class="w-75 pt-2 m-0"></p>
-                <h7 class="pt-2"></h7>
             </section>
         </a>
     </template>

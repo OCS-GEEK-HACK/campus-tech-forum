@@ -52,7 +52,11 @@ try {
     <meta charset="UTF-8">
     <title>オーシャン掲示板 - アイデア詳細</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
-    <?php require_once('../../lib/socket.io-comments.php'); ?>
+    <?php
+    require_once('../../lib/socket.io-comments/index.php');
+    $socket_io = new SocketIOMessage("idea");
+    $socket_io->render();
+    ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 

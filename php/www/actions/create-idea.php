@@ -69,7 +69,7 @@ try {
         'createdAt'   => date('Y/m/d H:i'),
         'createdBy'   => $_SESSION['user_displayName']
     ];
-    $url = "http://express:3000/new_idea";
+    $url = getenv("ENV") == "dev" ? "http://express:3000/new_idea" : getenv('EXPRESS_URL')."/new_idea" ;
     $data = json_encode($ideaData);
 
     $ch = curl_init($url);
