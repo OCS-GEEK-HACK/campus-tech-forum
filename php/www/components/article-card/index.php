@@ -16,7 +16,7 @@ class ArticleCard
         $this->title = $title;
         $this->content = $content;
         $this->link = $link;
-        $this->date = $title;
+        $this->date = $date;
     }
     public function render()
     {

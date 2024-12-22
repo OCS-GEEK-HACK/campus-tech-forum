@@ -11,7 +11,6 @@ $comments = null;
 $is_participating = false;
 $participants = [];
 
-
 // イベントIDが存在しなかった場合のエラー処理
 if (!isset($_GET['event_id']) || !is_numeric($_GET['event_id'])) {
     $_SESSION['errors'] = ['不正なイベントIDです。'];
@@ -56,7 +55,6 @@ try {
         $is_participating = $stmt_check->fetch(PDO::FETCH_ASSOC) !== false;
     }
 
-
     $sql_participants = "SELECT u.displayname, u.image, u.id FROM event_participants ep
                      JOIN users u ON ep.user_id = u.id
                      WHERE ep.event_id = :event_id";
@@ -74,9 +72,13 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <title>イベント詳細</title>
+    <title>オーシャン掲示板 - イベント詳細</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
-    <?php require_once('../../lib/socket.io-comments.php'); ?>
+    <?php
+    require_once('../../lib/socket.io-comments/index.php');
+    $socket_io = new SocketIOMessage("event");
+    $socket_io->render();
+    ?>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 

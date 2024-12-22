@@ -14,14 +14,6 @@ const io = socketIo(server, {
 // JSONのパースを追加
 app.use(express.json()); // これがないとPOSTリクエストのJSONがパースされない
 
-// /new_room へのPOSTリクエストを処理
-app.post("/new_room", (req, res) => {
-  // 受け取った投稿を全てのクライアントに送信
-  io.emit("new_room", req.body);
-
-  res.status(200).json({ message: "送信成功" });
-});
-
 app.post("/new_event", (req, res) => {
   // 受け取ったイベント情報を全クライアントに通知
   io.emit("new_event", req.body);
@@ -39,13 +31,19 @@ app.post("/new_event_comment", (req, res) => {
   res.status(200).json({ message: "送信成功" });
 });
 
-// /new_comment へのPOSTリクエストを処理
-app.post("/new_comment", (req, res) => {
+app.post("/new_idea", (req, res) => {
+  // 受け取ったイベント情報を全クライアントに通知
+  io.emit("new_idea", req.body);
+
+  res.status(200).json({ message: "イベント作成情報を送信しました。" });
+});
+
+app.post("/new_idea_comment", (req, res) => {
   // 受け取った投稿を対象ルームのクライアントに送信
-  const { roomId, name, comment, createdAt } = req.body;
+  const { idea_id, ...rest } = req.body;
 
   // roomIdを使って限定的に送信（ルームごとの通知）
-  io.to(roomId).emit("new_comment", { name, comment, createdAt });
+  io.to(idea_id).emit("new_idea_comment", rest);
 
   res.status(200).json({ message: "送信成功" });
 });

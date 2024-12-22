@@ -72,3 +72,38 @@ VALUES
  '渋谷カンファレンスルーム', 
  'PostgreSQLの基礎から応用まで学べるハンズオン形式のセミナーです。'
 );
+
+
+CREATE TABLE ideas (
+    id SERIAL PRIMARY KEY, -- 自動で増加するID
+    user_id INT NOT NULL, -- ユーザーID (usersテーブルと紐付け)
+    title VARCHAR(255) NOT NULL, -- イベントのタイトル
+    tags TEXT[] NOT NULL, -- タグの配列（PostgreSQLの配列型を利用）
+    description TEXT, -- イベントの詳細な説明
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP, -- 作成日時（タイムゾーン付き）
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP, -- 更新日時（タイムゾーン付き）
+    -- 外部キーの設定 (usersテーブルのidを参照)
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE idea_comments (
+    id SERIAL PRIMARY KEY, -- 自動で増加するID
+    idea_id INT NOT NULL, -- どのイベントへのコメントか（eventsテーブルと紐付け）
+    user_id INT NOT NULL, -- コメントしたユーザーのID（usersテーブルと紐付け）
+    content TEXT NOT NULL, -- コメントの内容
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP, -- 作成日時
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP, -- 更新日時
+    -- 外部キーの設定
+    CONSTRAINT fk_idea FOREIGN KEY (idea_id) REFERENCES ideas(id) ON DELETE CASCADE,
+    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- user_id 1 (Yamada) が作成したイベントを挿入
+-- 今日から2日後の14:00に設定する
+INSERT INTO ideas (user_id, title, tags, description) 
+VALUES 
+(1, 
+ 'オーシャン掲示板', 
+ ARRAY['PHP'], 
+ '人とつながれる掲示板をPHPで作りたい'
+);
