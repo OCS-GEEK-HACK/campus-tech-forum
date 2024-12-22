@@ -14,7 +14,7 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
 
 <head>
     <meta charset="UTF-8">
-    <title>学内掲示板アプリ - アイデア共有</title>
+    <title>オーシャン掲示板 - アイデア作成</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
     <style>
@@ -50,9 +50,9 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                     <!-- タイトル -->
                     <div class="mb-3">
                         <label for="title" class="form-label w-100">アイデアタイトル</label>
-                        <input type="text" name="title" id="title" class="form-control" 
-                               placeholder="例: PostgreSQLハンズオンセミナー" 
-                               value="<?= htmlspecialchars($old_input['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+                        <input type="text" name="title" id="title" class="form-control"
+                            placeholder="例: PostgreSQLハンズオンセミナー"
+                            value="<?= htmlspecialchars($old_input['title'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
                         <?php if (!empty($errors['title'])): ?>
                             <p class="text-danger"><?= htmlspecialchars($errors['title'], ENT_QUOTES, 'UTF-8'); ?></p>
                         <?php endif; ?>
@@ -61,9 +61,9 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                     <!-- タグ -->
                     <div class="mb-3">
                         <label for="tags" class="form-label w-100">タグ</label>
-                        <input type="text" name="tags" id="tags" class="form-control" 
-                               placeholder="例: セミナー, ハンズオン, PostgreSQL" 
-                               value="<?= htmlspecialchars($old_input['tags'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
+                        <input type="text" name="tags" id="tags" class="form-control"
+                            placeholder="例: セミナー, ハンズオン, PostgreSQL"
+                            value="<?= htmlspecialchars($old_input['tags'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required>
                         <small class="form-text text-muted">カンマ区切りで複数のタグを入力してください。</small>
                         <?php if (!empty($errors['tags'])): ?>
                             <p class="text-danger"><?= htmlspecialchars($errors['tags'], ENT_QUOTES, 'UTF-8'); ?></p>
@@ -73,8 +73,8 @@ unset($_SESSION['errors'], $_SESSION['old']); // 1回だけ使うので、ここ
                     <!-- 内容 -->
                     <div class="mb-3">
                         <label for="description" class="form-label w-100">内容</label>
-                        <textarea name="description" id="description" class="form-control" rows="5" 
-                                  placeholder="イベントの詳細を入力してください" required><?= htmlspecialchars($old_input['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
+                        <textarea name="description" id="description" class="form-control" rows="5"
+                            placeholder="イベントの詳細を入力してください" required><?= htmlspecialchars($old_input['description'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
                         <?php if (!empty($errors['description'])): ?>
                             <p class="text-danger"><?= htmlspecialchars($errors['description'], ENT_QUOTES, 'UTF-8'); ?></p>
                         <?php endif; ?>

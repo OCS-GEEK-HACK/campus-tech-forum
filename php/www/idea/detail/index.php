@@ -51,7 +51,7 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <title>アイデア詳細</title>
+    <title>オーシャン掲示板 - アイデア詳細</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
     <?php require_once('../../lib/socket.io-comments.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
@@ -134,7 +134,7 @@ try {
                 <?php else: ?>
                     <!-- エラー表示 -->
                     <div class="alert alert-danger">
-                        <strong>エラーが発生しました。</strong> イベント情報が見つかりませんでした。
+                        <strong>エラーが発生しました。</strong> アイデア情報が見つかりませんでした。
                     </div>
                 <?php endif; ?>
             </div>

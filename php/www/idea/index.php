@@ -27,22 +27,22 @@ try {
 </head>
 
 <body>
-    <div class="d-flex">    
-        <?php 
-            $sidebar = new Sidebar();
-            $sidebar->render();
+    <div class="d-flex">
+        <?php
+        $sidebar = new Sidebar();
+        $sidebar->render();
         ?>
 
         <!-- メインコンテンツ -->
         <div class="content w-100 ms-md-4">
-            <?php 
-                $header = new Header();
-                $header->render();
+            <?php
+            $header = new Header();
+            $header->render();
             ?>
             <section class="p-4 d-flex flex-column gap-3 container">
                 <div class="d-flex w-100 justify-content-between">
-                <h4>アイデア一覧</h4>
-                <a href="/idea/create/" class="btn btn-dark d-block"><i class="fas fa-plus"></i> 投稿する</a>
+                    <h4>アイデア一覧</h4>
+                    <a href="/idea/create/" class="btn btn-dark d-block"><i class="fas fa-plus"></i> 投稿する</a>
                 </div>
 
                 <?php if (empty($ideas)): ?>

@@ -74,7 +74,7 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <title>イベント詳細</title>
+    <title>オーシャン掲示板 - イベント詳細</title>
     <?php require_once('../../lib/bootstrap.php'); ?>
     <?php require_once('../../lib/socket.io-comments.php'); ?>
     <link rel="stylesheet" href="/style/main.css">
