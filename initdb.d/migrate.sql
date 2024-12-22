@@ -103,7 +103,7 @@ CREATE TABLE idea_comments (
 INSERT INTO ideas (user_id, title, tags, description) 
 VALUES 
 (1, 
- 'PostgreSQLハンズオンセミナー', 
- ARRAY['セミナー', 'PostgreSQL', 'ハンズオン'], 
- 'PostgreSQLの基礎から応用まで学べるハンズオン形式のセミナーです。'
+ 'オーシャン掲示板', 
+ ARRAY['PHP'], 
+ '人とつながれる掲示板をPHPで作りたい'
 );
