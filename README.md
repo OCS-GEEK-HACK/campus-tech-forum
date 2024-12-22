@@ -42,3 +42,6 @@ docker exec -it db bash # Docker内のdbコンテナにアクセス
 psql -U johndoe -d mydb; # Postgresにサインイン
 exit #抜ける時はこれを2回実行
 ```
+
+[プレゼン資料](https://www.canva.com/design/DAGZ5m0Y200/QDnxNZIqU0GesFgHHvvMeA/view?utm_content=DAGZ5m0Y200&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hebfd886429)
+[デプロイ](https://ocean-forum.onrender.com)
